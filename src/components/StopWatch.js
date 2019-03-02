@@ -41,7 +41,7 @@ export class StopWatch extends React.Component {
         <h2>stop watch</h2>
         <span className="stopwatch-time">{this.state.timer}</span>
         <button onClick={this.handleStopWatch}>{this.state.isRunning? 'Stop' : 'Start'}</button>
-        <button>Reset</button>
+        <button onClick={()=>this.setState({timer: 0})}>Reset</button>
       </div>
     );
   }
