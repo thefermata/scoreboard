@@ -19,21 +19,20 @@ class App extends React.Component {
   };
 
   handleChangeScore = (idx, delta) => {
-console.log(idx, delta)
     const players = this.state.players.map((player, i)=>{
-      if (idx == i) {
+      if (idx === i) {
         player.score += delta;
       }
       return player;
     });
 
     this.setState({players});
-  }
+  };
 
   render() {
     return (
       <div className="scoreboard">
-        <Header title="My scoreboard" totalPlayers={ 1+10 }/>
+        <Header title="My scoreboard" players={this.state.players}/>
         {
           this.state.players.map((play, index) => <Player
             name={play.name}
