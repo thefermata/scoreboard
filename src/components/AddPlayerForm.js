@@ -1,6 +1,7 @@
 import React from 'react';
 
 export class AddPlayerForm extends React.Component {
+  textInput = React.createRef(); // dom reference 할당. 돔에 접근하기 위한 참조값
   constructor(props) {
     super(props);
     this.state = {
@@ -16,18 +17,15 @@ export class AddPlayerForm extends React.Component {
   };
 
   handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
-    this.props.addPlayer(this.state.playerName);
-    this.setState({
-      playerName: ''
-    })
+    this.props.addPlayer(this.textInput.current.value);
+    this.setState({playerName: ''});
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="enter players name" value={this.state.playerName} onChange={this.handleValueChange}/>
+        <input type="text" placeholder="enter players name" ref={this.textInput}/>
         <input type="submit" value="Add Player"/>
       </form>
     );
