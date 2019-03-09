@@ -20,9 +20,6 @@ class Counter extends React.Component {
     )
   }
 }
-/*
-let mapStateToProps = (state) => ({
-  in
-});*/
+
 // changeScore는 action creator 이다.
 export default connect(null, {changeScore})(Counter);

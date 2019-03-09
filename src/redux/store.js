@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import {ADD_PLAYER, CHANGE_SCORE, UPDATE_TITLE} from "./actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, UPDATE_TITLE} from "./actionTypes";
 
 // 초기 state를 만들어 디폴트 매개변수 값으로 처리
 const playerInitialState = {
@@ -28,6 +28,11 @@ const playerReducer = (state = playerInitialState, action) => {
           ...state.players,
           {name: action.name, score:0, id: ++playerId}
         ],
+      }
+    case REMOVE_PLAYER:
+      return {
+        ...state,
+        players: state.players.filter(player=>player.id !== action.id),
       }
     case CHANGE_SCORE:
       state.players.forEach(item=>{

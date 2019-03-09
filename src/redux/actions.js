@@ -1,6 +1,6 @@
 // 액션을 만들어줌,
 
-import {UPDATE_TITLE, ADD_PLAYER, CHANGE_SCORE} from "./actionTypes";
+import {UPDATE_TITLE, ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "./actionTypes";
 
 // 타이틀을 받아 액션을 만든다. 액션 creator
 export const updateTitle = (title) => {
@@ -16,6 +16,15 @@ export const addPlayer = (name) => {
     name: name,
   }
 }
+
+
+export const removePlayer = (id) => {
+  return {
+    type: REMOVE_PLAYER,
+    id,
+  }
+}
+
 
 export const changeScore = (index, score) => {
   return {

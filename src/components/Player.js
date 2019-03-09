@@ -1,9 +1,11 @@
 import React from 'react';
 import Counter from "./Counter";
+import {removePlayer} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class Player extends React.Component {
+class Player extends React.Component {
   render() {
-    const {id, name, removePlayer} = this.props;
+    const {id, name, removePlayer, score} = this.props;
     return (
       <div className="player">
         <span className="player-name">
@@ -12,7 +14,7 @@ export class Player extends React.Component {
         <span className="player-name">
         {name}
         </span>
-        <Counter />
+        <Counter score={score} index={id}/>
       </div>
     );
   }
@@ -24,3 +26,5 @@ export class Player extends React.Component {
     return nextProps.score !== this.props.score;
   }
 }
+
+export default connect(null, {removePlayer})(Player);
