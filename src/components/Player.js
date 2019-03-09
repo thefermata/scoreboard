@@ -1,5 +1,5 @@
 import React from 'react';
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 
 export class Player extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export class Player extends React.Component {
         <span className="player-name">
         {name}
         </span>
-        <Counter {...this.props}/>
+        <Counter />
       </div>
     );
   }

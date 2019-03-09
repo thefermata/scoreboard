@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {changeScore} from "../redux/actions";
 
-export class Counter extends React.Component {
+class Counter extends React.Component {
   static propTypes  = {
     changeScore: PropTypes.func,
     index: PropTypes.number,
@@ -18,3 +20,9 @@ export class Counter extends React.Component {
     )
   }
 }
+/*
+let mapStateToProps = (state) => ({
+  in
+});*/
+// changeScore는 action creator 이다.
+export default connect(null, {changeScore})(Counter);

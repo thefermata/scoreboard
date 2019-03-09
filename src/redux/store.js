@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import {ADD_PLAYER, UPDATE_TITLE} from "./actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, UPDATE_TITLE} from "./actionTypes";
 
 // 초기 state를 만들어 디폴트 매개변수 값으로 처리
 const playerInitialState = {
@@ -28,6 +28,18 @@ const playerReducer = (state = playerInitialState, action) => {
           ...state.players,
           {name: action.name, score:0, id: ++playerId}
         ],
+      }
+    case CHANGE_SCORE:
+      state.players.forEach(item=>{
+        if(item.id === action.index) {
+          item.score += action.score;
+        }
+      })
+      return {
+        ...state,
+        players: [
+          ...state.players,
+        ]
       }
     default: return state;
   }
